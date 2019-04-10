@@ -37,3 +37,19 @@ void display(int size,int bt[],int pid[],int at[],int wt[],int tat[],int flag)
     }
     printf("\n");
 }
+
+void displayWithPrio(int size,int bt[],int pid[],int at[],int prio[],int wt[],int tat[],int flag)
+{
+    if(flag==1)
+        printf("\nPID\tAT\tBT\tPRIO\tWT\tTAT\n");
+    else
+        printf("\nPID\tBT\tPRIO\tWT\tTAT\n");
+    for(int i=0;i<size;i++)
+    {
+        if(flag==1)
+            printf("P%d \t%d\t%d\t%d\t%d\t%d\n",pid[i],at[i],bt[i],prio[i],wt[i],tat[i]);
+        else
+            printf("P%d \t%d\t%d\t%d\t%d\n",pid[i],bt[i],prio[i],wt[i],tat[i]);
+    }
+    printf("\n");
+}

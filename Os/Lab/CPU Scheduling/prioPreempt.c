@@ -4,7 +4,7 @@
 
 int main()
 {
-    int n=6;
+    int n=7;
     printf("\nEnter the no. of processes: \n");
     scanf("%d",&n);
 
@@ -18,12 +18,20 @@ int main()
     int print[100];
     int counter=0;
 
+    int prio[n+1];
+    for(int i=0;i<n;i++)
+    {
+        printf("\nEnter the priority for process P%d: ",pid[i]);
+        scanf("%d",&prio[i]);
+    }
+
     /*pid[0]=0;
     pid[1]=1;
     pid[2]=2;
     pid[3]=3;
     pid[4]=4;
     pid[5]=5;
+    pid[6]=6;
 
     at[0]=0;
     at[1]=1;
@@ -31,14 +39,26 @@ int main()
     at[3]=3;
     at[4]=4;
     at[5]=5;
+    at[6]=6;
 
-    bt[0]=8;
-    bt[1]=4;
-    bt[2]=2;
-    bt[3]=1;
-    bt[4]=3;
-    bt[5]=2;*/
+    bt[0]=1;
+    bt[1]=7;
+    bt[2]=3;
+    bt[3]=6;
+    bt[4]=5;
+    bt[5]=15;
+    bt[6]=8;
 
+    prio[0]=2;
+    prio[1]=6;
+    prio[2]=3;
+    prio[3]=5;
+    prio[4]=4;
+    prio[5]=10;
+    prio[6]=9;*/
+
+
+    prio[n]=999;
     int wt[n],tat[n];
     float avgwt=0.0,avgtat=0.0;
 
@@ -56,18 +76,18 @@ int main()
         tat[i]=-1;
     }
 
-    for(int timer=0;timer<25;timer++)       //just give some random big value > sum of the burst time of all the process;
+    for(int timer=0;timer<50;timer++)       //just give some random big value > sum of the burst time of all the process (in this case it is 45);
     {
-        bt[n]=9999;
+        prio[n]=9999;                   //Just reinitializing prio[n] after evry inner j loop.
         for(int j=0;j<n;j++)
         {
             if(bt[j]<=0)
             {
                 continue;
             }
-            if(at[j]<=timer && bt[j]<=bt[n])
+            if(at[j]<=timer && prio[j]<=prio[n])    //low priority number means it has higher priority. i.e prio 1 >prio 2
             {
-                if(bt[j]==bt[n])
+                if(prio[j]==prio[n])
                 {
                     if(at[j]>at[n])
                     {
@@ -75,7 +95,7 @@ int main()
                     }
                 }  //When two process have the same bt then select the process with least arrival time.
 
-                bt[n]=bt[j];
+                prio[n]=prio[j];
                 at[n]=at[j];
                 posOfSmallProcess=j;
 
@@ -101,8 +121,9 @@ int main()
         }
 
     }
-    display(n,btcopy,pid,at,wt,tat,1);
-    int temp=99;
+    displayWithPrio(n,btcopy,pid,at,prio,wt,tat,1);
+
+    int temp=99;    //give some dummy value
     for(int i=0;i<counter;i++)
     {
         if(temp!=print[i])
