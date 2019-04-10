@@ -95,6 +95,9 @@ pageTable *deallocation(int pno,pageTable *pt)
     {
         if(ptr->pno!=pno)
         {
+
+            preptr=ptr;
+            ptr=ptr->next;
             continue;
         }
         else
@@ -130,6 +133,7 @@ pageTable *deallocation(int pno,pageTable *pt)
         preptr=ptr;
         ptr=ptr->next;
     }//ewhile
+    return preptr;
 }//edealloc
 
 void pageDisplay(pageTable *pt)

@@ -60,8 +60,9 @@ end query2;
 --*****************************"OPUTPUT BELOW"**********************************
 /
 
-exec query2(&rno,&dateofpurchase);
+exec query2(&rno,'&dateofpurchase');
 --"Dont forget to execute the stms. below"  
 alter table receipts drop constraint ck_date;
 alter table receipts drop column today;
 --*****************************************************************************    
+

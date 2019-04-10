@@ -34,10 +34,10 @@ create table item_list
 desc item_list;	
 
 -- insert values into table
-@E:\B.Harish\Sem 4\Dbms\Lab 3\bakery
+@"E:\B.Harish\Sem 4\Dbms\Lab 3\bakery"
 /
 
---3,7 not working
+--7 not working
 --8 - used views
 
 --1: Display the food details that is not purchased by any of customers.
@@ -61,6 +61,25 @@ select item,count(item) from item_list
 	where receipt in 
 	(select rno from Receipts)
 	group by item order by count(item) desc;
+
+/*
+subquery version(working)
+select * from products
+where pid in
+(select item from item_list
+group by item
+having count(item)>=all
+(select count(item) from item_list
+group by item))
+
+subquery version 2:
+select item from item_list
+group by item
+having count(item) =
+(select max(cnt)
+from(select count(item) cnt
+from item_list group by item))
+*/
 
 --********************************************************************
 
