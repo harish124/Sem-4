@@ -1,0 +1,19 @@
+#!/bin/bash
+echo "Tot no. of args $#"
+
+echo "Tot no. of args $#"
+echo "Script name is = $0"
+
+echo "Script name without leading path is = `basename $0` "
+
+echo "Tot no. of args together using \$* $*"
+echo "Tot no. of args together using \$@ $@"
+
+Output Below: 
+
+Tot no. of args 4
+Tot no. of args 4
+Script name is = ./shellProg1.sh
+Script name without leading path is = shellProg1.sh 
+Tot no. of args together using $* 5 4 1 2
+Tot no. of args together using $@ 5 4 1 2
