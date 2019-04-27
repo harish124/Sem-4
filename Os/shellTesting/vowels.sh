@@ -16,8 +16,9 @@ consonants()
 	temp=$(eval "grep -o [a-z] fibonacci.sh|grep -v [aeiou]|wc -l")
 	echo "No.of consonants = $temp"
 
-	<<-EOF
-        Another way : grep -ov [aeiou] fibonacci.sh|wc -l --> no. of consonants
+	<<-EOF        
+	Aliter:
+	temp=$("grep -o [a-z] fibonacci.sh|grep -v [aeiou]|wc -l")
 	== for string comparisons
 	-eq for integer comparisons
 
