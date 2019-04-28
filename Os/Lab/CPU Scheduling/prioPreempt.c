@@ -115,7 +115,7 @@ int main()
             wt[posOfSmallProcess]= (timer+1)-at[posOfSmallProcess]-btcopy[posOfSmallProcess];
             avgwt+=wt[posOfSmallProcess];
 
-            //tat = completion time -bt
+            //tat = completion time -at
             tat[posOfSmallProcess]=(timer+1) - at[posOfSmallProcess];
             avgtat+=tat[posOfSmallProcess];
         }

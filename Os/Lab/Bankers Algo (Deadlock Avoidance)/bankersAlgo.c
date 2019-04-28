@@ -117,7 +117,7 @@ int main()
     int safety[p];
     int itr=0;
     int count=0;
-    while(index<=n)
+    while(index<=p)
     {
         for(int i=0;i<p;i++)
         {

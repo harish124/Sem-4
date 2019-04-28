@@ -134,7 +134,7 @@ int main()
             {
                 req[i][0]=999;
                 flag[i]=1;
-
+                index++;
                 for(int x=0;x<n;x++)
                 {
                     avail[x]+=alloc[i][x];
@@ -151,7 +151,7 @@ int main()
         //just stopping after 20 iterations
 
     }
-
+    printf("\nIndex = %d\n",index);
     if(index!=p)
     {
         printf("\nThe below processes are in deadlock\n");
